@@ -1,0 +1,284 @@
+* {
+  font-family: Roboto, sans-serif;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('Roboto-Regular-webfont.eot');
+  src: url('Roboto-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('Roboto-Regular-webfont.woff') format('woff'),
+    url('Roboto-Regular-webfont.ttf') format('truetype'),
+    url('Roboto-Regular-webfont.svg#RobotoRegular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('Roboto-Italic-webfont.eot');
+  src: url('Roboto-Italic-webfont.eot?#iefix') format('embedded-opentype'),
+    url('Roboto-Italic-webfont.woff') format('woff'),
+    url('Roboto-Italic-webfont.ttf') format('truetype'),
+    url('Roboto-Italic-webfont.svg#RobotoItalic') format('svg');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('Roboto-Bold-webfont.eot');
+  src: url('Roboto-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+    url('Roboto-Bold-webfont.woff') format('woff'),
+    url('Roboto-Bold-webfont.ttf') format('truetype'),
+    url('Roboto-Bold-webfont.svg#RobotoBold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('Roboto-BoldItalic-webfont.eot');
+  src: url('Roboto-BoldItalic-webfont.eot?#iefix') format('embedded-opentype'),
+    url('Roboto-BoldItalic-webfont.woff') format('woff'),
+    url('Roboto-BoldItalic-webfont.ttf') format('truetype'),
+    url('Roboto-BoldItalic-webfont.svg#RobotoBoldItalic') format('svg');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('Roboto-Thin-webfont.eot');
+  src: url('Roboto-Thin-webfont.eot?#iefix') format('embedded-opentype'),
+    url('Roboto-Thin-webfont.woff') format('woff'),
+    url('Roboto-Thin-webfont.ttf') format('truetype'),
+    url('Roboto-Thin-webfont.svg#RobotoThin') format('svg');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('Roboto-ThinItalic-webfont.eot');
+  src: url('Roboto-ThinItalic-webfont.eot?#iefix') format('embedded-opentype'),
+    url('Roboto-ThinItalic-webfont.woff') format('woff'),
+    url('Roboto-ThinItalic-webfont.ttf') format('truetype'),
+    url('Roboto-ThinItalic-webfont.svg#RobotoThinItalic') format('svg');
+   font-weight: 200;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('Roboto-Light-webfont.eot');
+  src: url('Roboto-Light-webfont.eot?#iefix') format('embedded-opentype'),
+    url('Roboto-Light-webfont.woff') format('woff'),
+    url('Roboto-Light-webfont.ttf') format('truetype'),
+    url('Roboto-Light-webfont.svg#RobotoLight') format('svg');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('Roboto-LightItalic-webfont.eot');
+  src: url('Roboto-LightItalic-webfont.eot?#iefix') format('embedded-opentype'),
+    url('Roboto-LightItalic-webfont.woff') format('woff'),
+    url('Roboto-LightItalic-webfont.ttf') format('truetype'),
+    url('Roboto-LightItalic-webfont.svg#RobotoLightItalic') format('svg');
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('Roboto-Medium-webfont.eot');
+  src: url('Roboto-Medium-webfont.eot?#iefix') format('embedded-opentype'),
+    url('Roboto-Medium-webfont.woff') format('woff'),
+    url('Roboto-Medium-webfont.ttf') format('truetype'),
+    url('Roboto-Medium-webfont.svg#RobotoMedium') format('svg');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('Roboto-MediumItalic-webfont.eot');
+  src: url('Roboto-MediumItalic-webfont.eot?#iefix') format('embedded-opentype'),
+    url('Roboto-MediumItalic-webfont.woff') format('woff'),
+    url('Roboto-MediumItalic-webfont.ttf') format('truetype'),
+    url('Roboto-MediumItalic-webfont.svg#RobotoMediumItalic') format('svg');
+  font-weight: 300;
+  font-style: italic;
+}
+
+
+.app {
+  display: flex;
+  background-color: whitesmoke;
+}
+
+.grid-container {
+  display: grid;
+  flex: 1;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+
+}
+
+.input-container {
+  background-color: whitesmoke;
+}
+
+.pokemon-item {
+  background-color: white;
+  padding: 8px;
+  margin: 4px;
+  margin-top: 80px;
+  margin-left: 20px;
+  margin-right: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.pokemon-item:hover {
+  background-color: gainsboro;
+}
+
+.fitted-image {
+  max-width: 100%;
+  max-height: 100%;
+  margin-top: -25%;
+  transform: scale(1.4);
+}
+
+.item-pokemon-number {
+  max-width: 100%;
+  margin-top: 5px;
+  font-weight: bold;
+  font-size: small;
+  color: rgb(172, 165, 165);
+}
+
+.item-pokemon-name {
+  max-width: 100%;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: medium;
+  text-transform: capitalize;
+}
+
+.pokemon-details {
+  flex-basis: 30%;
+  max-width: 40%;
+  border-radius: 10px 0px 0px 10px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  position: sticky;
+  top: 20px;
+  height: 60vh;
+  overflow-y: auto;
+}
+
+.pokemon-details-image {
+  max-width: fit-content;
+  max-height: fit-content;
+  transform: scale(1.5);
+  margin-top: 15%;
+}
+
+.body-container {
+  margin: 0px;
+}
+
+.types-container {
+  display: flex;
+  padding: 0%;
+  list-style-type: none;
+  justify-content:center;
+  margin-top: 10;
+}
+
+.type-item-text {
+  opacity: 0.8;
+}
+
+.attributes-container {
+  list-style-type: none;
+  padding: 0%;
+  justify-content: center;
+  align-items: center;
+}
+
+.attributes-item-container {
+  list-style-type: none;
+  align-content: "center";
+  padding: 0%;
+}
+
+.attributes-item-type {
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: medium;
+  text-transform: uppercase;
+}
+
+.attributes-item-value {
+  list-style-type: none;
+  padding: 0%;
+  background-color: whitesmoke;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 5px;
+  padding: 10px;
+  border-radius: 40px;
+}
+
+.stats-container {
+  background-color: whitesmoke;
+  margin: 20px;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.stats-title {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.stats-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.stat-item:last-child {
+  border-bottom: none;
+}
+
+.stat-name {
+  text-transform: capitalize;
+  color: #666;
+}
+
+.stat-value {
+  font-weight: bold;
+  background-color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  min-width: 40px;
+  text-align: center;
+}
