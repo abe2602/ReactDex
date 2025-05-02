@@ -6,10 +6,32 @@ import PokemonStat from "./model/PokemonStat";
 import SelectedPokemon from "./components/SelectedPokemon";
 import PokemonItem from "./components/PokemonItem";
 
+interface PokemonResponse {
+  id: number;
+  name: string;
+  sprites: {
+    front_default: string;
+  };
+  height: number;
+  weight: number;
+  base_experience: number;
+  types: Array<{
+    type: {
+      name: string;
+    };
+  }>;
+  stats: Array<{
+    stat: {
+      name: string;
+    };
+    base_stat: number;
+  }>;
+}
+
 function PokemonGrid() {
-  const [pokemonList, setPokemonList] = useState([]);
-  const [selectedPokemon, setPokemon] = useState(null);
-  const [searchInput, setSeachInput] = useState("");
+  const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
+  const [selectedPokemon, setPokemon] = useState<Pokemon | null>(null);
+  const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
     fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
@@ -17,9 +39,11 @@ function PokemonGrid() {
         return pokemonListResponse.json();
       })
       .then((pokemonListResponse) => {
-        const pokemonUrlList = pokemonListResponse.results.map((result) => {
-          return result.url;
-        });
+        const pokemonUrlList = pokemonListResponse.results.map(
+          (result: { url: string }) => {
+            return result.url;
+          }
+        );
 
         Promise.all(
           pokemonUrlList.map((url: string) =>
@@ -27,14 +51,13 @@ function PokemonGrid() {
               return response.json();
             })
           )
-        ).then((detailsList) => {
+        ).then((detailsList: PokemonResponse[]) => {
           const pokemonList = detailsList.map((result) => {
             const typeList = result.types.map((types) => {
               return types.type.name;
             });
 
             const statsList = result.stats.map((stats) => {
-              console.log(stats);
               return new PokemonStat(stats.stat.name, stats.base_stat);
             });
 
@@ -42,9 +65,9 @@ function PokemonGrid() {
               result.id,
               result.name,
               result.sprites.front_default,
-              result.height,
-              result.weight,
-              result.base_experience,
+              result.height.toString(),
+              result.weight.toString(),
+              result.base_experience.toString(),
               statsList,
               stringToPokemonType(typeList)
             );
@@ -55,9 +78,9 @@ function PokemonGrid() {
       });
   }, []);
 
-  function selectPokemon(pokemon: { pokemon: Pokemon }) {
+  function selectPokemon(pokemon: Pokemon) {
     if (selectedPokemon != null) {
-      if (pokemon.id == selectedPokemon.id) {
+      if (pokemon.id === selectedPokemon.id) {
         setPokemon(null);
       } else {
         setPokemon(pokemon);
@@ -68,12 +91,13 @@ function PokemonGrid() {
   }
 
   function searchPokemon(name: string) {
-    setSeachInput(name);
+    setSearchInput(name.toLowerCase());
   }
 
   return (
     <div className="input-container">
       <input
+        className="input-search"
         type="text"
         placeholder="Search some pokemon"
         onChange={(text) => searchPokemon(text.target.value)}
@@ -81,15 +105,18 @@ function PokemonGrid() {
       <div className="app">
         <div className="grid-container">
           {pokemonList
-            .filter(({ pokemon }: { pokemon: Pokemon }) => {
-              if (searchInput != "") {
-                return pokemon.name.includes(searchInput);
-              } else {
-                return true;
+            .filter((pokemon: Pokemon) => {
+              if (searchInput !== "") {
+                return pokemon.name.toLowerCase().includes(searchInput);
               }
+              return true;
             })
             .map((pokemon) => (
-              <PokemonItem pokemon={pokemon} selectPokemon={selectPokemon} />
+              <PokemonItem
+                key={pokemon.id}
+                pokemon={pokemon}
+                selectPokemon={selectPokemon}
+              />
             ))}
         </div>
         {selectedPokemon ? (
